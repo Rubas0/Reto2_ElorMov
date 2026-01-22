@@ -1,13 +1,16 @@
 package com.example.reto2_elormov.data.dto.repository
 
-import com.elormov.data.api.ElorServApi
-import com.elormov.data.dto.LoginRequest
-import com.elormov.data.dto.LoginResponse
+import com.example.reto2_elormov.data.api.ElorServApi
+import com.example.reto2_elormov.data.dto.LoginRequestDTO
+import com.example.reto2_elormov.data.dto.LoginResponseDTO
 import retrofit2.Response
 
 class AuthRepository(private val api: ElorServApi) {
 
-    suspend fun login(username: String, password: String): Response<LoginResponse> {
-        return api.login(LoginRequest(username, password))
+    /*
+    Capa intermedia que llama a la API. Realiza login contra ElorServ
+     */
+    suspend fun login(username: String, password: String): Response<LoginResponseDTO> {
+        return api.login(LoginRequestDTO(username, password))
     }
 }
