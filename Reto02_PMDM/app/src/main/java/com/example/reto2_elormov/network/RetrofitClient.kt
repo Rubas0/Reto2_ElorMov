@@ -21,7 +21,7 @@ object RetrofitClient {
     /**
      * Base URL del servidor ElorServ.
      */
-    private const val BASE_URL = "http://10.5.104.109:8080"
+    const val BASE_URL = "http://10.5.104.104:8080"
 
     /**
      * Interceptor HTTP para logging de peticiones y respuestas.

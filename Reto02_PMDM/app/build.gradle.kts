@@ -50,6 +50,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
     implementation("com.google.code.gson:gson:2.13.1")
 
+    // Glide para cargar imágenes desde URL
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+
     // Coroutines Core
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 

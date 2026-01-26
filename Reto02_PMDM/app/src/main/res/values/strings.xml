@@ -8,4 +8,12 @@
     <string name="login">Entrar</string>
     <string name="reset_pass">¿Has olvidado tu contraseña?</string>
     <string name="login_ok_bienvenido">Login OK - Bienvenido</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="enviar_nueva_contrasena">Enviar nueva contraseña</string>
+    <string name="anadir_foto">Añadir foto</string>
+    <string name="profile_photo">Foto de perfil</string>
+    <string name="add_photo">Añadir foto</string>
+    <string name="take_photo">Capturar foto</string>
+    <string name="nombre_apellidos">Nombre Apellidos</string>
+    <string name="email_example_com">email@example.com</string>
 </resources>

@@ -4,41 +4,46 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.reto2_elormov.data.dto.repository.AuthRepository
 import com.example.reto2_elormov.network.RetrofitClient
 import com.example.reto2_elormov.ui.index.IndexActivity
+import com.example.reto2_elormov.ui.login.LoginViewModel
 import com.example.reto2_elormov.utils.Prefs
-import com.example.reto2_elormov.R
-import com.example.reto2_elormov.data.dto.repository.AuthRepository
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import com.example.reto2_elormov.R
+import com.example.reto2_elormov.ui.profile.ProfileActivity
 
 class LoginActivity : ComponentActivity() {
-    private lateinit var etUser: EditText
-    private lateinit var etPass: EditText
-    private lateinit var btnLogin: Button
 
+    // ViewModel con inyección manual
     private val viewModel: LoginViewModel by lazy {
         val repo = AuthRepository(RetrofitClient.elorServApi)
         LoginViewModel(repo)
     }
 
+    // Remember me (solo autocompletar, no auto-login)
     private val prefs: Prefs by lazy { Prefs(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        etUser = findViewById(R.id.etUser)
-        etPass = findViewById(R.id.etPass)
-        btnLogin = findViewById(R.id.btnLogin)
+        // ⚠️ INICIALIZA LAS VISTAS AQUÍ, DESPUÉS DE setContentView
+        val etUser = findViewById<EditText>(R.id.etUser)
+        val etPass = findViewById<EditText>(R.id.etPass)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val txtForgotPassword = findViewById<TextView>(R.id.txtForgotPassword)
 
-        // Precargar Remember me
-        prefs.lastUsername?.let { etUser.setText(it) }
-        prefs.lastPassword?.let { etPass.setText(it) }
+        // Cargar credenciales guardadas (si existen)
+        etUser.setText(prefs.lastUsername.orEmpty())
+        etPass.setText(prefs.lastPassword.orEmpty())
 
+        // Botón Login
         btnLogin.setOnClickListener {
             val u = etUser.text.toString().trim()
             val p = etPass.text.toString().trim()
@@ -51,12 +56,17 @@ class LoginActivity : ComponentActivity() {
             viewModel.login(u, p)
         }
 
+        // Enlace "Olvidé mi contraseña"
+        txtForgotPassword.setOnClickListener {
+            startActivity(Intent(this, ResetPasswordActivity::class.java))
+        }
+
         // Observar estados del ViewModel
         lifecycleScope.launch {
             viewModel.state.collectLatest { state ->
                 when (state) {
                     is LoginState.Loading -> {
-                        // TODO: Mostrar ProgressBar
+                        // Mostrar Progress si quieres
                     }
                     is LoginState.Success -> {
                         // Guardar Remember me
@@ -69,13 +79,13 @@ class LoginActivity : ComponentActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        startActivity(Intent(this@LoginActivity, IndexActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
                         finish()
                     }
                     is LoginState.Error -> {
                         Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_LONG).show()
                     }
-                    is LoginState.Idle -> Unit // No hacer nada, es igual a void
+                    is LoginState.Idle -> Unit
                 }
             }
         }
