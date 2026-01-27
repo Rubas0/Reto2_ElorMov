@@ -11,5 +11,13 @@ data class UserDTO(
    val telefono1: String?,
    val telefono2: String?,
    val argazkiaUrl: String?,
-   val tipo: TipoDTO?
+   val tipoUsuario: TipoDTO?,
+   // Campos específicos de ALUMNO
+   val ciclo: String?,       // DAM, DAW, ASIR
+   val curso: String?,       // 1º, 2º
+   val dualIntensiva: Boolean?, // true/false (solo 2º)
+
+   // Campos específicos de PROFESOR
+   val departamento: String?,
+   val tutorDe: String?      // Ej: "2DAM"
 )

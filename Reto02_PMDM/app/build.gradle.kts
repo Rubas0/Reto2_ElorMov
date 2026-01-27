@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures { // Activar ViewBinding para generar clases binding para cada layout XML
+        viewBinding = true
+    }
 }
 
 dependencies {

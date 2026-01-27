@@ -21,7 +21,9 @@ object RetrofitClient {
     /**
      * Base URL del servidor ElorServ.
      */
-    const val BASE_URL = "http://10.5.104.104:8080"
+    // const val BASE_URL = "http://10.5.104.110:8080"
+    const val BASE_URL = "http://10.5.104.110:8080/"
+
 
     /**
      * Interceptor HTTP para logging de peticiones y respuestas.
@@ -64,7 +66,7 @@ object RetrofitClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttp)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create()) // Usamos Gson para JSON convierte json a objetos kotlin
             .build()
     }
 

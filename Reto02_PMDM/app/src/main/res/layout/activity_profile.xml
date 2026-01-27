@@ -1,40 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center">
+    android:padding="24dp">
 
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:contentDescription="@string/profile_photo"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginBottom="24dp"/>
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nombre_apellidos"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_example_com"
-        android:textSize="14sp"
-        android:layout_marginBottom="24dp"/>
-
-    <Button
-        android:id="@+id/btnTakePhoto"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/anadir_foto"/>
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-</LinearLayout>
+        <!-- Foto de perfil -->
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/profile_photo"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Nombre completo -->
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre Apellidos"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Username -->
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@username"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_example_com2"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Sección específica ALUMNO -->
+        <LinearLayout
+            android:id="@+id/layoutAlumnoInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@android:color/darker_gray"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Información Académica"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtCiclo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ciclo: DAM"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/txtCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Curso: 2º"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/txtDual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dual Intensiva: Sí"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Sección específica PROFESOR -->
+        <LinearLayout
+            android:id="@+id/layoutProfesorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@android:color/darker_gray"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Información Profesional"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtDepartamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Departamento: Informática"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/txtTutorDe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tutor de: 2DAM"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Botón añadir/cambiar foto -->
+        <Button
+            android:id="@+id/btnTakePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Añadir/Cambiar foto"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

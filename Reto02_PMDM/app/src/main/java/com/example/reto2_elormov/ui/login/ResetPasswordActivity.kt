@@ -12,6 +12,10 @@ import com.example.reto2_elormov.data.dto.repository.AuthRepository
 import com.example.reto2_elormov.network.RetrofitClient
 import kotlinx.coroutines.launch
 
+/**
+ * Actividad para restablecer la contraseña del usuario.
+ * Permite al usuario introducir su email para recibir instrucciones de restablecimiento.
+ */
 class ResetPasswordActivity : ComponentActivity() {
 
     private lateinit var etEmail: EditText

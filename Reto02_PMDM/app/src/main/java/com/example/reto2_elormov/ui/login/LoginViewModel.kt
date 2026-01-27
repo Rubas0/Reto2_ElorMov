@@ -24,9 +24,12 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
                 Log.d("LoginVM", "HTTP ${response.code()} ${response.message()}")
                 if (response.isSuccessful) {
                     val body = response.body()
-                    Log.d("LoginVM", "Resp success=${body?.success} msg=${body?.message}")
-                    if (body?.success == true) {
-                        _state.value = LoginState.Success(username)
+                    Log.d("LoginVM", "Resp success=${body?.success} msg=${body?.message} userId=${body?.user?.id}")
+                    if (body?.success == true && body.user?.id != null) {
+                        _state.value = LoginState.Success(
+                            username = username,
+                            userId = body.user.id //  Pasamos también userId
+                        )
                     } else {
                         _state.value = LoginState.Error(body?.message ?: "Credenciales incorrectas")
                     }

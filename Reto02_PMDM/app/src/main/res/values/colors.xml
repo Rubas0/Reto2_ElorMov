@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="clase_bg">#E3F2FD</color>
+    <color name="tutoria_bg">#FFF9C4</color>
+    <color name="guardia_bg">#F3E5F5</color>
+
+    <color name="reunion_pendiente">#FFF59D</color>
+    <color name="reunion_conflicto">#BDBDBD</color>
+    <color name="reunion_aceptada">#A5D6A7</color>
+    <color name="reunion_cancelada">#EF9A9A</color>
+
+    <color name="text_secondary">#757575</color>
 </resources>

@@ -16,6 +16,7 @@ import com.example.reto2_elormov.utils.Prefs
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import com.example.reto2_elormov.R
+import com.example.reto2_elormov.ui.home.HomeActivity
 import com.example.reto2_elormov.ui.profile.ProfileActivity
 
 class LoginActivity : ComponentActivity() {
@@ -72,6 +73,7 @@ class LoginActivity : ComponentActivity() {
                         // Guardar Remember me
                         prefs.lastUsername = etUser.text.toString()
                         prefs.lastPassword = etPass.text.toString()
+                        prefs.userId = state.userId // Guardar userId
 
                         Toast.makeText(
                             this@LoginActivity,
@@ -79,8 +81,8 @@ class LoginActivity : ComponentActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
-                        finish()
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
                     }
                     is LoginState.Error -> {
                         Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_LONG).show()

@@ -16,4 +16,6 @@
     <string name="take_photo">Capturar foto</string>
     <string name="nombre_apellidos">Nombre Apellidos</string>
     <string name="email_example_com">email@example.com</string>
+    <string name="email_example_com2">email@example.com</string>
+    <string name="no_horario_disponible">No hay horario disponible</string>
 </resources>
