@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
  * DTOs relacionados con el horario semanal de profesores y alumnos. Incluyen detalles sobre las clases,
  */
 data class HorarioDto(
+    @SerializedName("id") val id: Int = 0,
     @SerializedName("dia") val dia: String,
     @SerializedName("hora") val hora: Int,
     @SerializedName("tipo") val tipo: String, // CLASE, TUTORIA, GUARDIA, VACIO

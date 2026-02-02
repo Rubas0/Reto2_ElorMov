@@ -82,7 +82,14 @@ class LoginActivity : ComponentActivity() {
                         ).show()
 
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                        startActivity(intent)
+                        intent.putExtra("USUARIO_ID", state.userId)
+                        if (state.tipoId == 3) { // Si es profesor
+                            intent.putExtra("ES_PROFESOR", true)
+                        } else {
+                            intent.putExtra("ES_PROFESOR",  false)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                     is LoginState.Error -> {
                         Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_LONG).show()

@@ -18,4 +18,6 @@
     <string name="email_example_com">email@example.com</string>
     <string name="email_example_com2">email@example.com</string>
     <string name="no_horario_disponible">No hay horario disponible</string>
+    <string name="nombre_apellidosItem">Nombre Apellidos</string>
+    <string name="dam_2">DAM - 2º</string>
 </resources>

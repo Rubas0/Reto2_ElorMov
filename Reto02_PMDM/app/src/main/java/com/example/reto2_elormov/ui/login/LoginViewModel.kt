@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+
 /*
     Lógica de negocio: maneja estados (Loading, Success, Error).
  */
@@ -28,8 +29,8 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
                     if (body?.success == true && body.user?.id != null) {
                         _state.value = LoginState.Success(
                             username = username,
-                            userId = body.user.id //  Pasamos también userId
-                        )
+                            userId = body.user.id, //  Pasamos también userId
+                            tipoId = body.user.tipoId?.id ?: 0                         )
                     } else {
                         _state.value = LoginState.Error(body?.message ?: "Credenciales incorrectas")
                     }

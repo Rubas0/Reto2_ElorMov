@@ -1,5 +1,8 @@
 package com.example.reto2_elormov.data.api
 
+import com.example.reto2_elormov.data.dto.AlumnoDTO
+import com.example.reto2_elormov.data.dto.AlumnosResponseDTO
+import com.example.reto2_elormov.data.dto.HorarioResponseDTO
 import com.example.reto2_elormov.data.dto.LoginRequestDTO
 import com.example.reto2_elormov.data.dto.LoginResponseDTO
 import com.example.reto2_elormov.data.dto.ResetPasswordRequestDto
@@ -7,6 +10,7 @@ import com.example.reto2_elormov.data.dto.ResetPasswordResponseDto
 import com.example.reto2_elormov.data.dto.UploadPhotoResponseDTO
 import com.example.reto2_elormov.data.dto.UserDTO
 import com.example.reto2_elormov.data.dto.HorarioSemanalDto
+import com.example.reto2_elormov.data.dto.ProfesoresResponseDTO
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -18,13 +22,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ElorServApi {
-    /*
+    /**
     Interfaz Retrofit con el endpoint /api/auth/login. Realiza una solicitud POST para autenticar a un usuario.
      */
     @POST("/api/auth/login")
     suspend fun login(@Body request: LoginRequestDTO): Response<LoginResponseDTO>
 
-    /*
+    /**
     Nuevo endpoint para restablecer la contraseña
      */
     @POST("api/auth/reset-password")
@@ -68,5 +72,19 @@ interface ElorServApi {
         @Path("id") alumnoId: Int,
         @Query("semana") semana: Int? = null
     ): Response<HorarioSemanalDto>
+
+    @GET("api/alumnos")
+    suspend fun getAlumnos(): Response<AlumnosResponseDTO>
+
+    @GET("api/alumnos/{id}")
+    suspend fun getAlumnoById(@Path("id") alumnoId: Int): Response<AlumnoDTO>
+
+
+    @GET("api/profesores")
+    suspend fun getProfesores(): Response<ProfesoresResponseDTO>
+
+    @GET("api/profesores/{id}/horario")
+    suspend fun getHorarioProfesor(@Path("id") profesorId: Int): Response<HorarioResponseDTO>
+
 }
 

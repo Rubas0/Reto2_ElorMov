@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Filtro Ciclo -->
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Consulta de Alumnos"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ciclo:"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:id="@+id/spinnerCiclo"
+        android:layout_width="375dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Filtro Curso -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Curso:"
+        android:textStyle="bold"/>
+
+    <!-- Contador -->
+    <Spinner
+        android:id="@+id/spinnerCurso"
+        android:layout_width="375dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/txtCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alumnos encontrados: 0"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAlumnos"
+        android:layout_width="match_parent"
+        android:layout_height="388dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

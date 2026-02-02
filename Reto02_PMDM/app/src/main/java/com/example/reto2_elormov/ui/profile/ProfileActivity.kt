@@ -158,16 +158,16 @@ class ProfileActivity : AppCompatActivity() {
                             .circleCrop()
                             .into(imgProfile)
 
-                        val tipo = (it.tipoUsuario ?: "").toString().lowercase()
-                        when (tipo) {
-                            "alumno" -> {
+                        val tipoId = it.tipoId?.id ?: 0
+                        when (tipoId) {
+                            1 -> {
                                 layoutAlumnoInfo.visibility = View.VISIBLE
                                 layoutProfesorInfo.visibility = View.GONE
                                 txtCiclo.text = "Ciclo: ${it.ciclo ?: "N/A"}"
                                 txtCurso.text = "Curso: ${it.curso ?: "N/A"}"
                                 txtDual.text = "Dual Intensiva: ${if (it.dualIntensiva == true) "Sí" else "No"}"
                             }
-                            "profesor" -> {
+                            3 -> {
                                 layoutAlumnoInfo.visibility = View.GONE
                                 layoutProfesorInfo.visibility = View.VISIBLE
                                 txtDepartamento.text = "Departamento: ${it.departamento ?: "N/A"}"
