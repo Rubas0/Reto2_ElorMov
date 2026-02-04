@@ -1,5 +1,6 @@
 package com.example.elormov.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -18,6 +19,7 @@ import com.example.elormov.retrofit.client.RetrofitClient
 import com.example.elormov.retrofit.entities.HorarioDTO
 import com.example.elormov.retrofit.entities.ReunionDTO
 import com.example.elormov.retrofit.entities.UserDTO
+import com.example.elormov.ui.PerfilActivity
 import com.example.elormov.ui.home.horario.ClassSlot
 import com.example.elormov.ui.home.horario.HorarioAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -143,32 +145,32 @@ class AlumnoHome : AppCompatActivity() {
      * TODO
      */
     private fun getReunionesAlumno(user: UserDTO) {
-//        api.getReunionesProfesor(user.id).enqueue(object : Callback<List<ReunionDTO>> {
-//            override fun onResponse(
-//                call: Call<List<ReunionDTO>>,
-//                response: Response<List<ReunionDTO>>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val allReuniones = response.body() ?: emptyList()
-//                    reunionesCache = allReuniones.filter { it.semana == currentWeek}
-//                    actualizarHorarioCompleto()
-//                } else {
-//                    Toast.makeText(
-//                        this@AlumnoHome,
-//                        "Error al obtener reuniones",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<ReunionDTO>>, t: Throwable) {
-//                Toast.makeText(
-//                    this@AlumnoHome,
-//                    "Fallo en la conexión: ${t.message}",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        })
+        api.getReunionesAlumno(user.id).enqueue(object : Callback<List<ReunionDTO>> {
+            override fun onResponse(
+                call: Call<List<ReunionDTO>>,
+                response: Response<List<ReunionDTO>>
+            ) {
+                if (response.isSuccessful) {
+                    val allReuniones = response.body() ?: emptyList()
+                    reunionesCache = allReuniones.filter { it.semana == currentWeek}
+                    actualizarHorarioCompleto()
+                } else {
+                    Toast.makeText(
+                        this@AlumnoHome,
+                        "Error al obtener reuniones",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<ReunionDTO>>, t: Throwable) {
+                Toast.makeText(
+                    this@AlumnoHome,
+                    "Fallo en la conexión: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
     }
 
     /**
@@ -235,7 +237,9 @@ class AlumnoHome : AppCompatActivity() {
     private fun setupProfileButton(user: UserDTO) {
         findViewById<FloatingActionButton>(R.id.fabProfile).setOnClickListener {
             Toast.makeText(this, "Ir al perfil de ${user.nombre}", Toast.LENGTH_SHORT).show()
-            //TODO: Cambiar a la actividad de perfil
+            val intent  = Intent(this, PerfilActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
 
         }
     }

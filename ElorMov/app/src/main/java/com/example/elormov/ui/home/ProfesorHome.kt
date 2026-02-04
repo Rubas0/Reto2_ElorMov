@@ -1,5 +1,6 @@
 package com.example.elormov.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -18,6 +19,7 @@ import com.example.elormov.retrofit.client.RetrofitClient
 import com.example.elormov.retrofit.entities.HorarioDTO
 import com.example.elormov.retrofit.entities.ReunionDTO
 import com.example.elormov.retrofit.entities.UserDTO
+import com.example.elormov.ui.PerfilActivity
 import com.example.elormov.ui.home.horario.ClassSlot
 import com.example.elormov.ui.home.horario.HorarioAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -234,8 +236,9 @@ class ProfesorHome : AppCompatActivity() {
     private fun setupProfileButton(user: UserDTO) {
         findViewById<FloatingActionButton>(R.id.fabProfile).setOnClickListener {
             Toast.makeText(this, "Ir al perfil de ${user.nombre}", Toast.LENGTH_SHORT).show()
-            //TODO: Cambiar a la actividad de perfil
-
+            val intent = Intent(this, PerfilActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
         }
     }
 

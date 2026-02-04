@@ -9,6 +9,7 @@ import com.example.elormov.retrofit.entities.ReunionDTO
 import com.example.elormov.retrofit.entities.UploadPhotoResponseDTO
 import com.example.elormov.retrofit.entities.UserDTO
 import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -48,6 +49,13 @@ interface ElorServInterface {
     @GET("api/reuniones/profesor/{id}")
     fun getReunionesProfesor(@Path("id") profesorId: Int): Call<List<ReunionDTO>>
 
+    // Obtener reuniones de un alumno
+    @GET("api/reuniones/alumno/{id}")
+    fun getReunionesAlumno(@Path("id") alumnoId: Int): Call<List<ReunionDTO>>
+
+    @GET("api/users/{id}/argazkiaUrl")
+    suspend fun getPfp(@Path("id") userId: Int): Response<ResponseBody>
+
     // ======================= POST =======================
 
     // autenticar login.
@@ -61,9 +69,9 @@ interface ElorServInterface {
     // Subir foto de perfil
     @Multipart
     @POST("api/users/{id}/argazkiaUrl")
-    fun uploadPhoto(
+    suspend fun uploadPhoto(
         @Path("id") userId: Int,
-        @Part photo: MultipartBody.Part
-    ): Call<UploadPhotoResponseDTO>
+        @Part file: MultipartBody.Part
+    ): Response<UploadPhotoResponseDTO>
 
 }
