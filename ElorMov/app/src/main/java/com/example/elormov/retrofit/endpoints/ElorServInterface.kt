@@ -5,6 +5,7 @@ import com.example.elormov.retrofit.entities.LoginRequestDTO
 import com.example.elormov.retrofit.entities.LoginResponseDTO
 import com.example.elormov.retrofit.entities.ResetPasswordRequestDTO
 import com.example.elormov.retrofit.entities.ResetPasswordResponseDTO
+import com.example.elormov.retrofit.entities.ReunionDTO
 import com.example.elormov.retrofit.entities.UploadPhotoResponseDTO
 import com.example.elormov.retrofit.entities.UserDTO
 import okhttp3.MultipartBody
@@ -35,12 +36,17 @@ interface ElorServInterface {
     @GET("api/users/{id}")
     fun getProfile(@Path("id") userId: Int): Call<UserDTO>
 
-    // Obtener horario del profesor
-    @GET("horarios/profesor/{id}")
-    fun getHorarioProfesor(
-        @Path("id") profesorId: Int,
-        @Query("semana") semana: Int? = null
-    ): Call<HorarioDTO>
+    // Obtener horarios de un profesor
+    @GET("api/horarios/profesor/{id}")
+    fun getHorariosProfesor(@Path("id") profesorId: Int): Call<List<HorarioDTO>>
+
+    // Obtener horarios de un alumno
+    @GET("api/horarios/alumno/{id}")
+    fun getHorariosAlumno(@Path("id") alumnoId: Int): Call<List<HorarioDTO>>
+
+    // Obtener reuniones de un profesor
+    @GET("api/reuniones/profesor/{id}")
+    fun getReunionesProfesor(@Path("id") profesorId: Int): Call<List<ReunionDTO>>
 
     // ======================= POST =======================
 

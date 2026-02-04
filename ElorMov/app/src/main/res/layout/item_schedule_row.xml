@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="2dp"
+    android:minHeight="80dp">
+
+    <TextView
+        android:id="@+id/tvHour"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:background="@color/primary_blue"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvMonday"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textSize="9sp"
+        android:maxLines="7"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1"
+        android:textColor="@color/text_primary"
+        android:background="@color/white"
+        android:layout_marginStart="1dp"/>
+
+    <TextView
+        android:id="@+id/tvTuesday"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textSize="9sp"
+        android:maxLines="7"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1"
+        android:textColor="@color/text_primary"
+        android:background="@color/white"
+        android:layout_marginStart="1dp"/>
+
+    <TextView
+        android:id="@+id/tvWednesday"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textSize="9sp"
+        android:maxLines="7"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1"
+        android:textColor="@color/text_primary"
+        android:background="@color/white"
+        android:layout_marginStart="1dp"/>
+
+    <TextView
+        android:id="@+id/tvThursday"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textSize="9sp"
+        android:maxLines="7"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1"
+        android:textColor="@color/text_primary"
+        android:background="@color/white"
+        android:layout_marginStart="1dp"/>
+
+    <TextView
+        android:id="@+id/tvFriday"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textSize="9sp"
+        android:maxLines="7"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1"
+        android:textColor="@color/text_primary"
+        android:background="@color/white"
+        android:layout_marginStart="1dp"/>
+</LinearLayout>

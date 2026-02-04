@@ -20,4 +20,6 @@
     <string name="no_horario_disponible">No hay horario disponible</string>
     <string name="nombre_apellidosItem">Nombre Apellidos</string>
     <string name="dam_2">DAM - 2º</string>
+    <string name="perfil">Perfil</string>
+    <string name="menu">Menú</string>
 </resources>

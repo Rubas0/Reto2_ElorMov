@@ -16,9 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElorMov">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.home.ProfesorHome"
             android:exported="false" />
-        <!-- networkSecurityConfig para poder conectarnos al server con localhost (xml de conexion en res) -->
+        <activity
+            android:name=".ui.PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.AlumnoHome"
+            android:exported="false" />
         <activity
             android:name=".ui.ResetPasswordActivity"
             android:exported="false" />

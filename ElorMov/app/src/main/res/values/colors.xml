@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores principales del tema -->
+    <color name="primary_blue">#4A90E2</color>
+    <color name="primary_blue_dark">#357ABD</color>
+    <color name="light_blue">#E3F2FD</color>
+    <color name="lighter_blue">#F5F9FF</color>
+    <color name="accent_blue">#64B5F6</color>
+
+    <!-- Colores de texto -->
+    <color name="text_primary">#2C3E50</color>
+    <color name="text_secondary">#7F8C8D</color>
+
+    <!-- Colores de fondo -->
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_light">#F8FBFF</color>
+
+    <!-- Colores de estado -->
+    <color name="selected_blue">#2196F3</color>
+    <color name="unselected_gray">#BDBDBD</color>
+
+    <!-- Colores para reuniones -->
+    <color name="reunion_conflicto">#E0E0E0</color>
+    <color name="reunion_pendiente">#FFF9C4</color>
+    <color name="reunion_rechazada">#FFCDD2</color>
+    <color name="reunion_aceptada">#C8E6C9</color>
+
+    <!-- Colores heredados de Material Design -->
+    <color name="purple_200">#BBDEFB</color>
+    <color name="purple_500">#4A90E2</color>
+    <color name="purple_700">#357ABD</color>
+    <color name="teal_200">#81D4FA</color>
+    <color name="teal_700">#0288D1</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
