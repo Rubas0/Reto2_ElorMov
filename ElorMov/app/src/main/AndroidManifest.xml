@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- Indica que la aplicación usa la cámara-->
+    <!-- Indica que la aplicación usa la cámara -->
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
-    <!-- Necesita permiso para usar la cámara-->
+        android:required="true" /> <!-- Necesita permiso para usar la cámara -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,13 +20,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElorMov">
         <activity
-            android:name=".ui.home.ProfesorHome"
+            android:name=".ui.ConsultarAlumnos"
+            android:exported="false" />
+        <activity
+            android:name=".ui.utils.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProfesorHome"
             android:exported="false" />
         <activity
             android:name=".ui.PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.AlumnoHome"
+            android:name=".ui.AlumnoHome"
             android:exported="false" />
         <activity
             android:name=".ui.ResetPasswordActivity"

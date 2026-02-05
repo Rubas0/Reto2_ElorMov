@@ -1,4 +1,4 @@
-package com.example.elormov.ui.home
+package com.example.elormov.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,9 +19,8 @@ import com.example.elormov.retrofit.client.RetrofitClient
 import com.example.elormov.retrofit.entities.HorarioDTO
 import com.example.elormov.retrofit.entities.ReunionDTO
 import com.example.elormov.retrofit.entities.UserDTO
-import com.example.elormov.ui.PerfilActivity
-import com.example.elormov.ui.home.horario.ClassSlot
-import com.example.elormov.ui.home.horario.HorarioAdapter
+import com.example.elormov.ui.utils.ClassSlot
+import com.example.elormov.ui.adapters.HorarioAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,7 +31,10 @@ private lateinit var horarioAdapter: HorarioAdapter
 private var horariosCache: List<HorarioDTO> = emptyList()
 private var reunionesCache: List<ReunionDTO> = emptyList()
 private var currentWeek: Int = 1
-class AlumnoHome : AppCompatActivity() {
+
+private lateinit var user: UserDTO
+
+class ProfesorHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,8 +47,12 @@ class AlumnoHome : AppCompatActivity() {
 
         // =============== Obtener usuario ==================
         val extras: Bundle? = intent.extras
-        val user: UserDTO = extras?.getSerializable("user") as UserDTO
-        Toast.makeText(this, "Bienvenido Alumno ${user.nombre}", Toast.LENGTH_SHORT).show()
+        user = extras?.getSerializable("user") as UserDTO
+        Toast.makeText(
+            this,
+            getString(R.string.bienvenido_profesor, user.nombre),
+            Toast.LENGTH_SHORT
+        ).show()
 
         // ================= Inicializaciones  ==================
         setupHorario()
@@ -55,10 +61,10 @@ class AlumnoHome : AppCompatActivity() {
         setupWeekSelector(user)
 
         // =============== Obtener horarios del profesor ==================
-        getHorariosAlumno(user)
+        getHorariosProfesor(user)
 
         // =============== Obtener reuniones del profesor ==================
-        getReunionesAlumno(user)
+        getReunionesProfesor(user)
     }
 
 
@@ -78,7 +84,7 @@ class AlumnoHome : AppCompatActivity() {
                 currentWeek--
                 tvWeekNumber.text = currentWeek.toString()
                 updateWeekIndicator()
-                getReunionesAlumno(user)
+                getReunionesProfesor(user)
             }
         }
 
@@ -87,7 +93,7 @@ class AlumnoHome : AppCompatActivity() {
                 currentWeek++
                 tvWeekNumber.text = currentWeek.toString()
                 updateWeekIndicator()
-                getReunionesAlumno(user)
+                getReunionesProfesor(user)
             }
         }
     }
@@ -108,11 +114,11 @@ class AlumnoHome : AppCompatActivity() {
 
 
     /**
-     * Obtiene los horarios del alumno desde la API y actualiza el horario.
-     * @param user El objeto UserDTO que contiene la información del alumno.
+     * Obtiene los horarios del profesor desde la API y actualiza el horario.
+     * @param user El objeto UserDTO que contiene la información del profesor.
      */
-    private fun getHorariosAlumno(user: UserDTO) {
-        api.getHorariosAlumno(user.id).enqueue(object : Callback<List<HorarioDTO>> {
+    private fun getHorariosProfesor(user: UserDTO) {
+        api.getHorariosProfesor(user.id).enqueue(object : Callback<List<HorarioDTO>> {
             override fun onResponse(
                 call: Call<List<HorarioDTO>>,
                 response: Response<List<HorarioDTO>>
@@ -122,8 +128,8 @@ class AlumnoHome : AppCompatActivity() {
                     actualizarHorarioCompleto()
                 } else {
                     Toast.makeText(
-                        this@AlumnoHome,
-                        "Error al obtener horarios",
+                        this@ProfesorHome,
+                        getString(R.string.error_obtener_horarios),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -131,8 +137,8 @@ class AlumnoHome : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<HorarioDTO>>, t: Throwable) {
                 Toast.makeText(
-                    this@AlumnoHome,
-                    "Fallo en la conexión: ${t.message}",
+                    this@ProfesorHome,
+                    getString(R.string.fallo_conexion, t.message),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -140,23 +146,22 @@ class AlumnoHome : AppCompatActivity() {
     }
 
     /**
-     * Obtiene las reuniones del alumno desde la API y actualiza el horario para añadir las reuniones.
-     * @param user El objeto UserDTO que contiene la información del alumno.
-     * TODO
+     * Obtiene las reuniones del profesor desde la API y actualiza el horario para añadir las reuniones.
+     * @param user El objeto UserDTO que contiene la información del profesor.
      */
-    private fun getReunionesAlumno(user: UserDTO) {
-        api.getReunionesAlumno(user.id).enqueue(object : Callback<List<ReunionDTO>> {
+    private fun getReunionesProfesor(user: UserDTO) {
+        api.getReunionesProfesor(user.id).enqueue(object : Callback<List<ReunionDTO>> {
             override fun onResponse(
                 call: Call<List<ReunionDTO>>,
                 response: Response<List<ReunionDTO>>
             ) {
                 if (response.isSuccessful) {
                     val allReuniones = response.body() ?: emptyList()
-                    reunionesCache = allReuniones.filter { it.semana == currentWeek}
+                    reunionesCache = allReuniones.filter { it.semana == currentWeek }
                     actualizarHorarioCompleto()
                 } else {
                     Toast.makeText(
-                        this@AlumnoHome,
+                        this@ProfesorHome,
                         "Error al obtener reuniones",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -165,7 +170,7 @@ class AlumnoHome : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<ReunionDTO>>, t: Throwable) {
                 Toast.makeText(
-                    this@AlumnoHome,
+                    this@ProfesorHome,
                     "Fallo en la conexión: ${t.message}",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -186,7 +191,7 @@ class AlumnoHome : AppCompatActivity() {
             val reunionesDelDia = reunionesMap[hora] ?: emptyList()
 
             ClassSlot(
-                hour = "Hora $hora",
+                hour = getString(R.string.hora, hora),
                 monday = horasDelDia.find { it.dia == "LUNES" }?.modulo?.nombre ?: "",
                 tuesday = horasDelDia.find { it.dia == "MARTES" }?.modulo?.nombre ?: "",
                 wednesday = horasDelDia.find { it.dia == "MIERCOLES" }?.modulo?.nombre ?: "",
@@ -214,8 +219,8 @@ class AlumnoHome : AppCompatActivity() {
      * @param titulo El título de la reunión.
      * @return Una cadena formateada para mostrar en el horario.
      */
-    private fun formatReunion(titulo : String?): String {
-        return if (titulo.isNullOrEmpty()) "" else "Reunión: $titulo"
+    private fun formatReunion(titulo: String?): String {
+        return if (titulo.isNullOrEmpty()) "" else getString(R.string.reunion_formato, titulo)
     }
 
     /**
@@ -236,11 +241,11 @@ class AlumnoHome : AppCompatActivity() {
      */
     private fun setupProfileButton(user: UserDTO) {
         findViewById<FloatingActionButton>(R.id.fabProfile).setOnClickListener {
-            Toast.makeText(this, "Ir al perfil de ${user.nombre}", Toast.LENGTH_SHORT).show()
-            val intent  = Intent(this, PerfilActivity::class.java)
-            intent.putExtra("user", user)
+            val intent = Intent(this, PerfilActivity::class.java)
+            intent.putExtra("userLogin", user)
+            intent.putExtra("userPerfil", user)
             startActivity(intent)
-
+            finish()
         }
     }
 
@@ -255,22 +260,26 @@ class AlumnoHome : AppCompatActivity() {
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.menu_perfil -> {
-                        Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, ConsultarAlumnos::class.java)
+                        intent.putExtra("user", user)
+                        startActivity(intent)
                         true
                     }
 
                     R.id.menu_configuracion -> {
-                        Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Esto era un placeholder", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.menu_cerrar_sesion -> {
-                        Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
                         true
                     }
 
                     R.id.opcionExtra -> {
-                        Toast.makeText(this, "Opción Extra", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Esto era un placeholder", Toast.LENGTH_SHORT).show()
                         true
                     }
 

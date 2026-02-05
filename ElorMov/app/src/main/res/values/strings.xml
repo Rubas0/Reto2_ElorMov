@@ -8,18 +8,67 @@
     <string name="login">Entrar</string>
     <string name="reset_pass">¿Has olvidado tu contraseña?</string>
     <string name="login_ok_bienvenido">Login OK - Bienvenido</string>
-    <string name="recuperar_contrasena">Recuperar contraseña</string>
-    <string name="enviar_nueva_contrasena">Enviar nueva contraseña</string>
     <string name="anadir_foto">Añadir foto</string>
     <string name="profile_photo">Foto de perfil</string>
     <string name="add_photo">Añadir foto</string>
     <string name="take_photo">Capturar foto</string>
-    <string name="nombre_apellidos">Nombre Apellidos</string>
-    <string name="email_example_com">email@example.com</string>
-    <string name="email_example_com2">email@example.com</string>
+    <string name="email_example_com">email@ejemplo.com</string>
+    <string name="email_example_com2">email@ejemplo.com</string>
     <string name="no_horario_disponible">No hay horario disponible</string>
-    <string name="nombre_apellidosItem">Nombre Apellidos</string>
     <string name="dam_2">DAM - 2º</string>
-    <string name="perfil">Perfil</string>
     <string name="menu">Menú</string>
+    <!-- Perfil -->
+    <string name="cambiar_foto_perfil">Cambiar foto de perfil</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="info_Personal">Información Personal</string>
+    <string name="nombre">Nombre:</string>
+    <string name="apellidos">Apellidos:</string>
+    <string name="DNI">DNI:</string>
+    <string name="telefono">Teléfono 1:</string>
+    <string name="telefono2">Teléfono 2:</string>
+    <string name="direccion">Dirección:</string>
+
+    <!-- Horarios -->
+    <string name="lunes">Lunes</string>
+    <string name="martes">Martes</string>
+    <string name="miercoles">Miércoles</string>
+    <string name="jueves">Jueves</string>
+    <string name="viernes">Viernes</string>
+    <string name="semana">Semana</string>
+    <string name="semana_anterior">Semana anterior</string>
+    <string name="semana_siguiente">Semana siguiente</string>
+    <string name="hora">Hora %1$d</string>
+    <string name="mi_horario">Mi Horario</string>
+
+    <!-- Login y contraseña -->
+    <string name="olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="email">Email:</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="enviar_nueva_contrasena">Enviar nueva contraseña</string>
+
+    <!-- Mensajes de validación -->
+    <string name="usuario_password_obligatorios">Usuario y contraseña obligatorios</string>
+    <string name="credenciales_incorrectas">El usuario o la contraseña son incorrectas</string>
+    <string name="error_conexion_api">Error de conexión con la API</string>
+    <string name="introduce_email">Introduce tu email</string>
+    <string name="usuario_no_permitido">Usuario no permitido en la app</string>
+
+    <!-- Toast messages -->
+    <string name="bienvenido_profesor">Bienvenido Profesor %1$s</string>
+    <string name="bienvenido_alumno">Bienvenido Alumno %1$s</string>
+    <string name="ir_perfil">Ir al perfil de %1$s</string>
+    <string name="error_obtener_horarios">Error al obtener horarios</string>
+    <string name="error_obtener_reuniones">Error al obtener reuniones</string>
+    <string name="fallo_conexion">Fallo en la conexión: %1$s</string>
+    <string name="error_try_catch">Error de tryCatch</string>
+
+    <!-- Reuniones -->
+    <string name="reunion_formato">Reunión: %1$s</string>
+
+    <!-- Menu items  -->
+    <string name="consultarAlumnos">ConsultarAlumnos</string>
+    <string name="configuracion">Configuración</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="opcion_extra">Opción Extra</string>
+
 </resources>

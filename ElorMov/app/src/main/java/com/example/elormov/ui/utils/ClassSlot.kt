@@ -1,4 +1,4 @@
-package com.example.elormov.ui.home.horario
+package com.example.elormov.ui.utils
 
 data class ClassSlot(
     val hour: String,

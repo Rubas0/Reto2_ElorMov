@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
-    tools:context=".ui.home.ProfesorHome">
+    tools:context=".ui.ProfesorHome">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
@@ -49,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_profile"
-            android:contentDescription="@string/perfil"
             app:fabSize="mini"
             app:tint="@color/white"
             app:backgroundTint="@color/accent_blue"

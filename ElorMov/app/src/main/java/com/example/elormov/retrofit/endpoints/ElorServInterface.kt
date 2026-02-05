@@ -53,8 +53,13 @@ interface ElorServInterface {
     @GET("api/reuniones/alumno/{id}")
     fun getReunionesAlumno(@Path("id") alumnoId: Int): Call<List<ReunionDTO>>
 
+    // Obtener foto de perfil de un usuario
     @GET("api/users/{id}/argazkiaUrl")
     suspend fun getPfp(@Path("id") userId: Int): Response<ResponseBody>
+
+    // Obtener alumnos de un profesor
+    @GET("api/users/profesor/{id}/students")
+    fun getAlumnosDelProfesor(@Path("id") profesorId: Int): Call<List<UserDTO>>
 
     // ======================= POST =======================
 

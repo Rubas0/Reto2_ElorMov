@@ -6,20 +6,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.elormov.R
 import com.example.elormov.retrofit.client.RetrofitClient
 import com.example.elormov.retrofit.entities.LoginRequestDTO
 import com.example.elormov.retrofit.entities.LoginResponseDTO
 import com.example.elormov.retrofit.entities.UserDTO
-import com.example.elormov.retrofit.utils.Prefs
-import com.example.elormov.ui.home.AlumnoHome
-import com.example.elormov.ui.home.ProfesorHome
+import com.example.elormov.ui.utils.Prefs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginActivity : ComponentActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var prefs: Prefs
     private val api = RetrofitClient.elorServInterface
@@ -45,7 +43,11 @@ class LoginActivity : ComponentActivity() {
             val passwd = passInput.text.toString().trim()
 
             if (username.isEmpty() || passwd.isEmpty()) {
-                Toast.makeText(this, "Usuario y contraseña obligatorios", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.usuario_password_obligatorios),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
             login(username, passwd)
@@ -72,20 +74,12 @@ class LoginActivity : ComponentActivity() {
                     prefs.lastPassword = passwd
                     comprobarTipoUser(user)
                 } else { //el codigo de respuesta no es [200..300]
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "El usuario o la contraseña son incorrectas",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@LoginActivity, getString(R.string.credenciales_incorrectas), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<LoginResponseDTO?>, t: Throwable) {
-                Toast.makeText(
-                    this@LoginActivity,
-                    "Error de conexión con la API",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.error_conexion_api), Toast.LENGTH_LONG).show()
                 println("Error completo: ${t.printStackTrace()}")
                 t.printStackTrace()
             }
@@ -109,8 +103,7 @@ class LoginActivity : ComponentActivity() {
             }
 
             else -> {
-                Toast.makeText(this, "Usuario no permitido en la app", Toast.LENGTH_SHORT).show()
-            }
+                Toast.makeText(this, getString(R.string.usuario_no_permitido), Toast.LENGTH_SHORT).show()            }
         }
     }
 }

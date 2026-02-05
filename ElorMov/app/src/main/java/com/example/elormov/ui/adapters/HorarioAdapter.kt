@@ -1,4 +1,4 @@
-package com.example.elormov.ui.home.horario
+package com.example.elormov.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elormov.R
+import com.example.elormov.ui.utils.ClassSlot
 
 /**
  * Adaptador para el RecyclerView que muestra el horario de clases.

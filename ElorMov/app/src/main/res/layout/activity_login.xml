@@ -114,7 +114,7 @@
             android:clickable="true"
             android:focusable="true"
             android:minHeight="48dp"
-            android:text="¿Olvidaste tu contraseña?"
+            android:text="@string/olvidaste_contrasena"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="14sp" />
 

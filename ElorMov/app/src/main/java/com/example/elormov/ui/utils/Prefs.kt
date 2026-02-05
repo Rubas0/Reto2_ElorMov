@@ -1,4 +1,4 @@
-package com.example.elormov.retrofit.utils
+package com.example.elormov.ui.utils
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -28,7 +28,6 @@ class Prefs(context: Context) {
     var authToken: String?
         get() = prefs.getString("authToken", null)
         set(value) = prefs.edit { putString("authToken", value) }
-
 
     fun clearCredentials() {
         prefs.edit {

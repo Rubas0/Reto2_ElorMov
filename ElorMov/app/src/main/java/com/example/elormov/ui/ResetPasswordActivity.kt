@@ -1,22 +1,14 @@
 package com.example.elormov.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.example.elormov.R
 import com.example.elormov.retrofit.client.RetrofitClient
-import com.example.elormov.retrofit.entities.LoginRequestDTO
-import com.example.elormov.retrofit.entities.LoginResponseDTO
 import com.example.elormov.retrofit.entities.ResetPasswordRequestDTO
 import com.example.elormov.retrofit.entities.ResetPasswordResponseDTO
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +28,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             val email = inputEmail.text.toString().trim()
 
             if (email.isEmpty()) {
-                Toast.makeText(this, "Introduce tu email", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.introduce_email), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             enviarCorreo(email)
@@ -63,15 +55,14 @@ class ResetPasswordActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResetPasswordResponseDTO?>, t: Throwable) {
-                    Toast.makeText(this@ResetPasswordActivity, "Error de conexión con la API", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ResetPasswordActivity, getString(R.string.error_conexion_api), Toast.LENGTH_LONG).show()
                     println("Error completo: ${t.printStackTrace()}")
                     t.printStackTrace()
                 }
             })
         }catch (e: Exception){
-            Toast.makeText(this, "Error de tryCatch", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_try_catch), Toast.LENGTH_SHORT).show()
             println("Error completo: ${e.printStackTrace()}")
-
         }
     }
 }

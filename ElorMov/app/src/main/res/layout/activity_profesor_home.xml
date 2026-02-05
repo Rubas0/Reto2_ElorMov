@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
-    tools:context=".ui.home.ProfesorHome">
+    tools:context=".ui.ProfesorHome">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
@@ -32,24 +32,23 @@
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Mi Horario"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/mi_horario"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toEndOf="@id/btnMenu"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/fabProfile"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/btnMenu"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_profile"
-            android:contentDescription="@string/perfil"
             app:fabSize="mini"
             app:tint="@color/white"
             app:backgroundTint="@color/accent_blue"
@@ -75,10 +74,10 @@
             android:id="@+id/btnPreviousWeek"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@android:drawable/ic_media_previous"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Semana anterior"
-            app:tint="@color/primary_blue"/>
+            android:contentDescription="@string/semana_anterior"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="@color/primary_blue" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -93,9 +92,9 @@
                 android:id="@+id/tvWeekLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Semana"
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"/>
+                android:text="@string/semana"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvWeekNumber"
@@ -138,10 +137,10 @@
             android:id="@+id/btnNextWeek"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@android:drawable/ic_media_next"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Semana siguiente"
-            app:tint="@color/primary_blue"/>
+            android:contentDescription="@string/semana_siguiente"
+            android:src="@android:drawable/ic_media_next"
+            app:tint="@color/primary_blue" />
     </LinearLayout>
 
     <!-- CABECERA DE LOS DIAS DE LA SEMANA   -->
@@ -168,58 +167,58 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lunes"
-            android:textColor="@color/primary_blue"
-            android:textStyle="bold"
-            android:textSize="11sp"
             android:gravity="center"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            android:text="@string/lunes"
+            android:textColor="@color/primary_blue"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Martes"
-            android:textColor="@color/primary_blue"
-            android:textStyle="bold"
-            android:textSize="11sp"
             android:gravity="center"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            android:text="@string/martes"
+            android:textColor="@color/primary_blue"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.2"
-            android:text="Miércoles"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="4dp"
+            android:text="@string/miercoles"
             android:textColor="@color/primary_blue"
-            android:textStyle="bold"
             android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:padding="4dp"
-            android:maxLines="1"
-            android:ellipsize="none"/>
+            android:text="@string/jueves"
+            android:textColor="@color/primary_blue"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Jueves"
-            android:textColor="@color/primary_blue"
-            android:textStyle="bold"
-            android:textSize="11sp"
             android:gravity="center"
-            android:padding="4dp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Viernes"
+            android:padding="4dp"
+            android:text="@string/viernes"
             android:textColor="@color/primary_blue"
-            android:textStyle="bold"
             android:textSize="11sp"
-            android:gravity="center"
-            android:padding="4dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

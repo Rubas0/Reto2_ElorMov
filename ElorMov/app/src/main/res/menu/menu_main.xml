@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_perfil"
-        android:title="Perfil"/>
+        android:title="@string/consultarAlumnos" />
     <item
         android:id="@+id/menu_configuracion"
         android:title="Configuración"/>
